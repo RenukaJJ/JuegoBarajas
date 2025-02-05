@@ -9,10 +9,18 @@ namespace Barajas
 {
     public class Carta
     {
-        private string palo;
-        private int numero;
+        public enum ePalos
+        {
+            Oros,   
+            Copas,
+            Espadas,
+            Bastos,
+        }
 
-        public string Palo 
+        private int numero;
+        private string palo;
+
+        public string Palo
         {
             get {  return palo; } 
             set { palo = value; }
@@ -24,9 +32,10 @@ namespace Barajas
             set { numero = value; }
         }
 
-        public Carta() 
+        public Carta(string p, int n) 
         { 
-        
+            this.palo = p;
+            this.numero = n;
         }
     }
 }
