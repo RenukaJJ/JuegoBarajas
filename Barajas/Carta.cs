@@ -11,16 +11,16 @@ namespace Barajas
     {
         public enum ePalos
         {
-            Oros,   
-            Copas,
-            Espadas,
-            Bastos,
+            Oros=0,   
+            Copas=1,
+            Espadas=2,
+            Bastos=3,
         }
 
         private int numero;
-        private string palo;
+        private ePalos palo;
 
-        public string Palo
+        public ePalos Palo
         {
             get {  return palo; } 
             set { palo = value; }
@@ -32,7 +32,7 @@ namespace Barajas
             set { numero = value; }
         }
 
-        public Carta(string p, int n) 
+        public Carta(ePalos p, int n) 
         { 
             this.palo = p;
             this.numero = n;

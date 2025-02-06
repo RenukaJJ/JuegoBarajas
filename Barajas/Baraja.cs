@@ -21,8 +21,8 @@ namespace Barajas
             cartaList = new List<Carta> { };
             for (int i = 1; i < 11; i++)
             {
-                foreach (string name in Enum.GetNames(typeof(Carta.ePalos)))
-                    cartaList.Add(new Carta(name, i));
+                foreach (Carta.ePalos palo in Enum.GetValues(typeof(Carta.ePalos)))
+                    cartaList.Add(new Carta(palo, i));
             }
         }
 
@@ -36,29 +36,31 @@ namespace Barajas
 
         public void Barajar() 
         {
-            cartaList = cartaList.OrderBy(_ => rng.Next()).ToList();
-        }
-
-        public void Robar()
-        {
-            cartaList.RemoveRange(0, 1);
-        }
-
-        public void RobarRandom()
-        {
-            cartaList.RemoveRange(rng.Next(cartaList.Count()), 1);
-        }
-
-        public bool RobarN(int n)
-        {
-            if (n < cartaList.Count())
+            for (int i = cartaList.Count - 1; i > 0; i--)
             {
-                cartaList.RemoveRange((n-1),1);
-                return true;
+                int j = rng.Next(i + 1);
+                Carta c = cartaList[i];
+                cartaList[i] = cartaList[j];
+                cartaList[j] = c;
+            }
+            //cartaList = cartaList.OrderBy(_ => rng.Next()).ToList();
+        }
+
+        public Carta RobarN(int n)
+        {
+            if (n-1 < cartaList.Count() && n>0)
+            {
+                Carta c = cartaList[(n - 1)];
+                cartaList.Remove(c);
+                return c;
             }
             else
-                return false;
-            
+                return null;
+        }
+
+        public int Cantidad()
+        {
+            return cartaList.Count;
         }
     }
 }
