@@ -16,7 +16,7 @@ namespace JuegoBarajas
         private static Random rng = new Random();
         static void Main(string[] args)
         {
-            CraerBaraja();
+            CrearBaraja();
             Menu();
         }
 
@@ -28,7 +28,8 @@ namespace JuegoBarajas
 3. robar primera
 4. robar posicion n
 5. robar random
-6. Jugar Partida");
+6. Jugar Partida
+7. Iniciar la baraja ordenada");
 
             while (true)
             {
@@ -55,7 +56,7 @@ namespace JuegoBarajas
                         JugarPartida();
                         break;
                     case 7:
-                        Demo();
+                        CrearBaraja();
                         break;
                     default:
                         break;
@@ -63,18 +64,8 @@ namespace JuegoBarajas
 
             }
         }
-        static void Demo()
-        {
-            int totCartas = 40;
-            int jugadores = 3;
-            int rondas = totCartas / jugadores;
-            Console.WriteLine("rondas "+rondas);
-            for (int i = 0; i < rondas * jugadores; i++)
-            {
-                Console.WriteLine(i + " " + i % jugadores);
-            }
-        }
-        static void CraerBaraja() //
+
+        static void CrearBaraja() //
         {   
             miBaraja = new Baraja();
         }
